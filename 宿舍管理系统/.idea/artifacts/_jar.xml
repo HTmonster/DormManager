@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact name="宿舍管理系统:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/_jar</output-path>
+    <root id="root">
+      <element id="archive" name="宿舍管理系统.jar">
+        <element id="module-output" name="宿舍管理系统" />
+      </element>
+      <element id="file-copy" path="$PROJECT_DIR$/libs/mysql-connector-java-5.1.47-bin.jar" />
+      <element id="directory" name="icons">
+        <element id="dir-copy" path="$PROJECT_DIR$/icons" />
+      </element>
+    </root>
+  </artifact>
+</component>
