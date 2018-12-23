@@ -35,12 +35,24 @@ public class VisitPanel extends JPanel {
 
         init();
 
+//        //搜索面板
+//        JPanel searchPanel = new JPanel();
+//        searchPanel.setBackground(Color.blue);
+//        searchPanel.setPreferredSize(new Dimension(200,800));
+//        this.add(searchPanel,BorderLayout.EAST);
+//
+//        //
+//        JLabel searchlb = new JLabel("搜索宿舍访问记录");
+//        JTextField rnoText = new JTextField();
+//        JButton search = new JButton("搜索");
+
         //中央表格
         Vector<String> title = new Vector<String>(Arrays.asList(TITLE));
         refreshData();//更新数据 首次显示
         JTable VisitTable = new JTable(dataModel, title);
 //        VisitTable.getColumnModel().getColumn(0).setPreferredWidth(20);//设置列宽
-//        VisitTable.getColumnModel().getColumn(1).setPreferredWidth(80);
+//        VisitTable.getColumnModel().getColumn(2).setPreferredWidth(20);
+//        VisitTable.getColumnModel().getColumn(3).setPreferredWidth(80);
 
         JScrollPane scrollPane = new JScrollPane(VisitTable);
         this.add(scrollPane, BorderLayout.CENTER);

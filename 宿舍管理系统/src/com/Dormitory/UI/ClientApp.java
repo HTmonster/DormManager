@@ -10,6 +10,7 @@
 package com.Dormitory.UI;
 
 import com.Dormitory.UI.Frames.loginFrame;
+import com.Dormitory.UI.Frames.mainFrame;
 
 import java.awt.*;
 
@@ -21,6 +22,7 @@ public class ClientApp {
             public void run() {
                 //登录界面
                 loginFrame onload =new loginFrame();
+                //mainFrame main =new mainFrame();
             }
         });
     }

@@ -40,6 +40,10 @@ public class mainFrame extends JFrame {
         VisitPanel visitPanel=new VisitPanel();
         tabPane.addTab("来访信息", visitPanel);
 
+        // 创建一个fee面板
+        feePanel feePanel=new feePanel();
+        tabPane.addTab("水电费", feePanel);
+
         tabPane.setSelectedIndex(0);
     }
 
