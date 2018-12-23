@@ -116,7 +116,7 @@ public class loginFrame extends JFrame implements ActionListener {
         if(e.getActionCommand()=="登录")
         {
             this.normal_Login();
-        }else if(e.getActionCommand()=="超级用户登录")
+        }else if(e.getActionCommand()=="超级用户管理")
         {
             this.super_Login();
         }

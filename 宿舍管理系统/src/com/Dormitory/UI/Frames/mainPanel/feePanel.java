@@ -111,7 +111,7 @@ public class feePanel extends JPanel {
 
                 //显示具体的选择信息
                 rnoText.setText(feeTable.getValueAt(selectedRow,0).toString());
-                feeText.setText(feeTable.getValueAt(selectedRow,5).toString());
+                feeText.setText(feeTable.getValueAt(selectedRow,5).toString()+" 元");
                 isPaidText.setText(feeTable.getValueAt(selectedRow,6).toString());
             }
         });
