@@ -1,6 +1,6 @@
 /**
  * @ClassName: DormInfoPanel
- * @Description: (用一句话描述该文件做什么)
+ * @Description: 住宿信息管理面板
  * @author Theo_hui
  * @Email theo_hui@163.com
  * @Date 2018/12/22 19:18

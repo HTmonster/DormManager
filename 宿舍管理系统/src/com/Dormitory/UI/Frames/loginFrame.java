@@ -9,12 +9,12 @@ import java.awt.event.ActionListener;
 import com.Dormitory.jdbc.jdbcLogin;
 /**
  * @ClassName: loginFrame
- * @Description: (用一句话描述该文件做什么)
+ * @Description: 登录界面  普通登录进入主界面
+ *                        超级管理员登录进入管理界面
  * @author Theo_hui
  * @Email theo_hui@163.com
  * @Date 2018/12/20 21:16
  */
-
 
 
 public class loginFrame extends JFrame implements ActionListener {
@@ -147,7 +147,7 @@ public class loginFrame extends JFrame implements ActionListener {
             System.out.println(pwdstr);
             this.dispose();
 
-            mainFrame main = new mainFrame();
+            mainFrame main = new mainFrame(user);
         }
     }
 

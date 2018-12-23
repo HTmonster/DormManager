@@ -1,6 +1,6 @@
 /**
  * @ClassName: mainFrame
- * @Description: (用一句话描述该文件做什么)
+ * @Description: 客户端主界面 有多个panel 宿舍管理  住宿管理 访客管理 水电管理
  * @author Theo_hui
  * @Email theo_hui@163.com
  * @Date 2018/12/22 19:11
@@ -9,6 +9,7 @@
 
 package com.Dormitory.UI.Frames;
 
+//用到的所有panel
 import com.Dormitory.UI.Frames.mainPanel.*;
 
 import javax.swing.*;
@@ -16,8 +17,8 @@ import java.awt.*;
 
 public class mainFrame extends JFrame {
 
-    public mainFrame(){
-        init();
+    public mainFrame(String adminName){
+        init(adminName);
 
         // 创建选项窗格
         JTabbedPane tabPane = new JTabbedPane();
@@ -47,7 +48,7 @@ public class mainFrame extends JFrame {
         tabPane.setSelectedIndex(0);
     }
 
-    public void init(){
+    public void init(String adminName){
         //默认工具集 并获得屏幕大小
         Toolkit kit =Toolkit.getDefaultToolkit();
         Dimension screenSize =kit.getScreenSize();
@@ -74,7 +75,7 @@ public class mainFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //设置标题和布局
-        this.setTitle("宿舍管理系统");
+        this.setTitle("[宿舍管理系统]    管理员："+adminName+" 欢迎您！");
         this.setVisible(true);
     }
 

@@ -1,6 +1,6 @@
 /**
  * @ClassName: feePanel
- * @Description: (用一句话描述该文件做什么)
+ * @Description: 费用信息面板
  * @author Theo_hui
  * @Email theo_hui@163.com
  * @Date 2018/12/23 10:54
@@ -36,7 +36,7 @@ public class feePanel extends JPanel {
 
         //搜索面板
         JPanel searchPanel = new JPanel();
-        searchPanel.setBackground(Color.lightGray);
+        //searchPanel.setBackground(Color.lightGray);
         searchPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         searchPanel.setPreferredSize(new Dimension(200,800));
         this.add(searchPanel,BorderLayout.WEST);
@@ -48,19 +48,25 @@ public class feePanel extends JPanel {
         searchPanel.add(showallBtn);searchPanel.add(showNotPaidBtn);
 
         //中央面板
+        JPanel tblPanel = new JPanel();
+        tblPanel.setBackground(Color.gray);
+        this.add(tblPanel,BorderLayout.CENTER);
+
+        //中央面板————表格
         Vector<String> title = new Vector<String>(Arrays.asList(TITLE));
         refreshData();//更新数据 首次显示
         JTable feeTable = new JTable(dataModel, title);
-        feeTable.getColumnModel().getColumn(0).setPreferredWidth(20);//设置列宽
-        feeTable.getColumnModel().getColumn(2).setPreferredWidth(20);
-        feeTable.getColumnModel().getColumn(3).setPreferredWidth(80);
+//        feeTable.getColumnModel().getColumn(0).setPreferredWidth(20);//设置列宽
+//        feeTable.getColumnModel().getColumn(1).setPreferredWidth(20);
+//        feeTable.getColumnModel().getColumn(6).setPreferredWidth(10);
 
         JScrollPane scrollPane = new JScrollPane(feeTable);
-        this.add(scrollPane, BorderLayout.CENTER);
+        tblPanel.add(scrollPane);
 
         //操作面板
         JPanel opPanel = new JPanel();
-        opPanel.setBackground(Color.gray);
+        opPanel.setBackground(Color.lightGray);
+        opPanel.setPreferredSize(new Dimension(800,100));
         this.add(opPanel,BorderLayout.SOUTH);
 
         //操作面板————标签

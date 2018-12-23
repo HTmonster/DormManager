@@ -1,6 +1,6 @@
 /**
  * @ClassName: ClientApp
- * @Description: (用一句话描述该文件做什么)
+ * @Description: 客户端运行的主体
  * @author Theo_hui
  * @Email theo_hui@163.com
  * @Date 2018/12/22 19:09
@@ -14,6 +14,7 @@ import com.Dormitory.UI.Frames.mainFrame;
 
 import java.awt.*;
 
+//直接进行登录界面
 public class ClientApp {
     public static void main(String[] args) {
         //运行主体框架

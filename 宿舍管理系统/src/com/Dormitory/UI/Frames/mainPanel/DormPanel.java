@@ -1,6 +1,6 @@
 /**
  * @ClassName: DormPanel
- * @Description: (用一句话描述该文件做什么)
+ * @Description: 宿舍信息面板
  * @author Theo_hui
  * @Email theo_hui@163.com
  * @Date 2018/12/22 19:13
@@ -99,7 +99,7 @@ public class DormPanel extends JPanel {
 
     //基本信息初始化
     public void init(){
-        this.setBackground(Color.red);
+        //this.setBackground(Color.red);
         this.setLayout(new BorderLayout());
     }
 
