@@ -47,10 +47,6 @@ public class feePanel extends JPanel {
 
         searchPanel.add(showallBtn);searchPanel.add(showNotPaidBtn);
 
-        //中央面板
-        JPanel tblPanel = new JPanel();
-        tblPanel.setBackground(Color.gray);
-        this.add(tblPanel,BorderLayout.CENTER);
 
         //中央面板————表格
         Vector<String> title = new Vector<String>(Arrays.asList(TITLE));
@@ -61,7 +57,7 @@ public class feePanel extends JPanel {
 //        feeTable.getColumnModel().getColumn(6).setPreferredWidth(10);
 
         JScrollPane scrollPane = new JScrollPane(feeTable);
-        tblPanel.add(scrollPane);
+        this.add(scrollPane,BorderLayout.CENTER);
 
         //操作面板
         JPanel opPanel = new JPanel();
@@ -75,8 +71,8 @@ public class feePanel extends JPanel {
         JLabel paidlb = new JLabel("缴费：");
 
         //操作面板————输入框
-        JTextField rnoText = new JTextField(8);
-        JTextField feeText = new JTextField(8);
+        JTextField rnoText = new JTextField(14);
+        JTextField feeText = new JTextField(14);
         JTextField isPaidText = new JTextField(2);
         rnoText.setEditable(false);feeText.setEditable(false);isPaidText.setEditable(false);
 

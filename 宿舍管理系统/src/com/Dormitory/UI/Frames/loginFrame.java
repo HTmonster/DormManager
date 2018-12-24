@@ -79,7 +79,7 @@ public class loginFrame extends JFrame implements ActionListener {
         Dimension screenSize =kit.getScreenSize();
 
         //设置大小 和 位置
-        this.setSize(400,240);
+        this.setSize(300,200);
         this.setLocation((int)(screenSize.getWidth()/2)-200,(int)(screenSize.getHeight()/2)-120);
 
         //设置图标
@@ -145,8 +145,8 @@ public class loginFrame extends JFrame implements ActionListener {
             System.out.println("登录成功");
             System.out.println(user);
             System.out.println(pwdstr);
-            this.dispose();
 
+            this.dispose();
             mainFrame main = new mainFrame(user);
         }
     }

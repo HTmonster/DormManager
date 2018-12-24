@@ -12,7 +12,7 @@ import java.sql.*;
  * @Date 2018/12/13 14:58
  * @modifier 修改人 鲁念
  * @modifyDate 修改时间 2018/12/18
- * @modifyContent 修改内容 重载带参数的数据库操作
+ * @modifyContent 修改内容 重载带参数的数据库操作 添加事务操作
  */
 
 
@@ -26,10 +26,11 @@ public class jdbcDriver {
     static  String USER = "HaHaDM";
     static  String PASS = "1234";
 
+
     //数据库连接中间数据
-    public static Connection connection;
+    public static Connection conn;
     private PreparedStatement prestmt = null;
-    public static ResultSet resultset;
+    public static ResultSet rs;
     public static Statement statement;
     /*构造函数*/
     public  jdbcDriver(){
@@ -62,9 +63,9 @@ public class jdbcDriver {
      */
     public Connection jdbcConnection(){
         try {
-            connection = DriverManager.getConnection(DB_URL,USER,PASS);
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
             System.out.println("连接数据库成功！");
-            return connection;
+            return conn;
         } catch (Exception e) {
             System.out.print("MySQL连接失败！");
             return null;
@@ -77,13 +78,69 @@ public class jdbcDriver {
      */
     public void jdbcConnectionClose(){
         try {
-            connection.close();
+            conn.close();
             System.out.println("数据库连接成功关闭");
         } catch (SQLException e) {
             System.out.println("数据库连接关闭失败");
         }
     }
-
+    /**
+     * <p>描述：打开事务</p>
+     * @throws SQLException
+     **/
+    public final void transBegin() throws SQLException {
+        Connection conn = jdbcConnection();
+        conn.setAutoCommit(false);
+    }
+    /**
+     * <p>描述：事务回滚<p>
+     */
+    public void transRollBack() {
+        Connection conn = null;
+        try {
+            conn = jdbcConnection();
+            conn.rollback();
+        } catch (SQLException e) {
+            throw new RuntimeException("Couldn't rollback on connection[" + conn + "].", e);
+        }
+    }
+    /**
+     * <p>
+     * 描述：事务提交
+     * </p>
+     * @throws SQLException
+     */
+    public void transCommit() throws SQLException {
+        Connection conn = jdbcConnection();
+        conn.commit();
+    }
+    /**
+     * <p>
+     * 描述：关闭资源
+     * </p>
+     */
+    public void closeResource() {
+        try {
+            if (rs != null) {
+                rs.close();
+                rs = null;
+            }
+            if (statement != null) {
+                statement.close();
+                statement = null;
+            }
+            if (prestmt != null) {
+                prestmt.close();
+                prestmt = null;
+            }
+            if (conn != null) {
+                conn.close();
+                conn = null;
+            }
+        } catch (SQLException e) {
+            System.out.println("关闭数据库游标、结果集、连接资源失败："+e.getMessage());
+        }
+    }
     /**
      * 更新
      * executeUpdate
@@ -93,6 +150,7 @@ public class jdbcDriver {
     //执行带有参数的sql语句
     public int jdbcExecuteUpdate(String sql, String[] args) throws SQLException {
         Connection conn=jdbcConnection();
+        conn.setAutoCommit( false );
         if (sql == null || args == null)
             throw new SQLException("SQL语句为空！");
         prestmt=conn.prepareStatement(sql);
@@ -109,7 +167,6 @@ public class jdbcDriver {
      */
 
     public ResultSet jdbcExecuteQuery(String sql, String[] args) throws SQLException {
-        ResultSet rs = null;
         Connection conn=jdbcConnection();
         prestmt=conn.prepareStatement(sql);
         if (sql == null || args == null)
@@ -132,7 +189,8 @@ public class jdbcDriver {
      */
     public void jdbcExecuteUpdate(String s) throws SQLException{
         Connection conn=jdbcConnection();
-        statement=connection.createStatement();
+        conn.setAutoCommit( false );
+        statement=conn.createStatement();
         statement.executeUpdate(s);
     }
 
@@ -144,9 +202,9 @@ public class jdbcDriver {
      */
     public ResultSet jdbcExecuteQuery(String s) throws SQLException{
         Connection conn=jdbcConnection();
-        statement=connection.createStatement();
-        resultset=statement.executeQuery(s);
-        return resultset;
+        statement=conn.createStatement();
+        rs=statement.executeQuery(s);
+        return rs;
     }
 
 

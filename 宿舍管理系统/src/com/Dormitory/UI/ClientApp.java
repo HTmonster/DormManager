@@ -23,7 +23,6 @@ public class ClientApp {
             public void run() {
                 //登录界面
                 loginFrame onload =new loginFrame();
-                //mainFrame main =new mainFrame();
             }
         });
     }

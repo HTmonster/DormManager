@@ -1,6 +1,6 @@
 /**
  * @ClassName: mainFrame
- * @Description: 客户端主界面 有多个panel 宿舍管理  住宿管理 访客管理 水电管理
+ * @Description: 客户端主界面 有多个panel 宿舍管理  住宿管理 访客管理 水电管理 维修设备
  * @author Theo_hui
  * @Email theo_hui@163.com
  * @Date 2018/12/22 19:11
@@ -45,6 +45,10 @@ public class mainFrame extends JFrame {
         feePanel feePanel=new feePanel();
         tabPane.addTab("水电费", feePanel);
 
+        // 创建一个fepair面板
+        RepairPanel repairPanel = new RepairPanel();
+        tabPane.addTab("设备维修",repairPanel);
+
         tabPane.setSelectedIndex(0);
     }
 
@@ -55,6 +59,7 @@ public class mainFrame extends JFrame {
 
         //设置大小和位置
         this.setSize(1200,760);
+        this.setMinimumSize(new Dimension(1200,760));
         this.setLocation((int)(screenSize.getWidth()/2-600),(int)(screenSize.getHeight()/2-380));
 
         //设置图标
